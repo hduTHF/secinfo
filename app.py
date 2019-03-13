@@ -1,24 +1,27 @@
-from flask import Flask,render_template,jsonify,request
+from flask import Flask,render_template,request
 from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_,and_
-
 from datetime import datetime, timedelta
+from models import db,Info
+from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
+import pymysql
 
+import  setting
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///E:/Py/Spider/info.db'
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN']=True
+app.config['SQLALCHEMY_DATABASE_URI']=setting.SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN']=setting.SQLALCHEMY_COMMIT_ON_TEARDOWN
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 
+login_manage = LoginManager(app)
+login_manage.session_protection='strong'
+login_manage.login_view='login'
 bootstrap = Bootstrap(app)
-db=SQLAlchemy(app)
 
-class Info(db.Model):
-    title=db.Column(db.String(255),nullable=False)
-    content=db.Column(db.String(255),nullable=True)
-    time=db.Column(db.String(255),nullable=False)
-    source=db.Column(db.String(100),nullable=False)
-    href=db.Column(db.String(255),nullable=False,primary_key=True)
+db.init_app(app)
+
+
 
 def count():
     NOW = datetime.utcnow()
@@ -81,6 +84,10 @@ def cert():
     return render_template("360cert.html",pagination=pagination,data=data)
 
 
+@app.route('/login')
+def login():
+    return render_template('auth/login.html')
+
 # @app.route('/mail/')
 # def send_mail():
 #     pass
@@ -88,3 +95,4 @@ def cert():
 
 if __name__ == '__main__':
     app.run()
+
