@@ -3,10 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
 db=SQLAlchemy()
-
-
-
-
 class Info(db.Model):
     __tablename__="info"
     title=db.Column(db.String(255),nullable=False)
