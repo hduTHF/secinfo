@@ -1,0 +1,33 @@
+{% extends "test1.html" %}
+{% import "_macros.html" as macros %}
+
+
+
+{% block content %}
+<div style="position: fixed; top:150px; width: 60% ;left:20%">
+<table class=" table table-condensed  ">
+  <caption>IPVM</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data %}
+            <td><a href="{{ d.href }}">{{ d.title }}</a></td>
+            <td>{{ d.time }}</td>
+            </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+
+{%if pagination%}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, 'ipvm') }}
+    </div>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://v3.bootcss.com/examples/cover/ -->
+<html lang="zh-CN">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/cover.css" rel="stylesheet">
+
+
+
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+                <h3 class="masthead-brand"><a href="/">安全监控</a></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                    <li><a href="{{ url_for("ipvm") }}">IPVM</a></li>
+                    <li><a href="{{ url_for('anquanke') }}">安全客</a></li>
+                    <li><a href="{{ url_for('youshang') }}" >友商</a></li>
+                    <li><a href="{{ url_for('cert') }}">360Cert</a></li>
+
+                </ul>
+                  <form class="bs-example bs-example-form" role="form" action="{{ url_for('search') }}" method="GET" style="float: right">
+                        <div class="row">
+                            <div id="search" class="col-lg-6" style="width: 100%; display: none" >
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Key Words" name="keyword">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="sumbit"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <button class="btn btn-default" type="button" id="my_button"><span class="glyphicon glyphicon-search"></span></button>
+                        </div><!-- /.row -->
+                    </form>
+              </nav>
+            </div>
+          </div>
+
+
+
+
+            {% block content %}
+            <div class="inner cover" >
+            <h1 class="cover-heading">Cover your page.</h1>
+            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            <p class="lead">
+              <a href="https://v3.bootcss.com/examples/cover/#" class="btn btn-lg btn-default">Learn more</a>
+            </p>
+          </div>
+            {% endblock %}
+
+
+          <div class="mastfoot" style="display: none;">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#my_button").click(function () {
+               $("#search").show();
+               $("#my_button").hide()
+            })
+        })
+
+    </script>
+
+</body>
+
+
+</html>

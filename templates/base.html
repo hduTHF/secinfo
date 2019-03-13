@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+
+
+
+{% block title %}
+    Title
+{% endblock %}
+{% block body %}
+    {{ super() }}
+    <style>
+        body {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .img{
+            text-align:center
+        }
+    </style>
+
+{% endblock %}
+{% block navbar %}
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">安全监控</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="{{ url_for("ipvm") }}">IPVM</a></li>
+            <li><a href="{{ url_for('anquanke') }}">安全客</a></li>
+            <li><a href="{{ url_for('youshang') }}" >友商</a>
+            </li>
+            <li><a href="{{ url_for('cert') }}">360Cert</a></li>
+        </ul>
+    </div>
+    <form class="navbar-form navbar-text navbar-right" action="{{ url_for('search') }}" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Key Words" name="keyword">
+        </div>
+        <button type="submit" class="btn btn-default" >搜索</button>
+    </form>
+    </div>
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+    <div class="img" >
+        <img src="../static/timg.jpg" >
+    </div>
+{% endblock %}

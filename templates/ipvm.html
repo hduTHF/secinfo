@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block title %}
+    IPVM
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <style>
+        a:visited{
+            color: #8c1955
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+<table class="table  table-bordered">
+  <caption>IPVM</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data %}
+            <td><a href="{{ d.href }}">{{ d.title }}</a></td>
+            <td>{{ d.time }}</td>
+            </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+{%if pagination%}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, 'ipvm') }}
+    </div>
+{% endif %}
+
+{% endblock %}

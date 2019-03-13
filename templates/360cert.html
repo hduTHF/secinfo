@@ -1,0 +1,42 @@
+{% extends "test1.html" %}
+{% import "_macros.html" as macros %}
+{% block title %}
+    360Cert
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <style>
+        a:visited{
+            color: #8c1955
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+<div style="position: fixed; top:150px; width: 60% ;left:20%">
+<table class="table table-condensed">
+  <caption>360安全预警</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data %}
+            <td><a href="{{ d.href }}">{{ d.title }}</a></td>
+            <td>{{ d.time }}</td>
+            </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+{%if pagination%}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, 'cert') }}
+    </div>
+{% endif %}
+</div>
+{% endblock %}

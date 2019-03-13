@@ -1,0 +1,52 @@
+{% extends "test1.html" %}
+
+
+{% block body %}
+    {{ super() }}
+    <style>
+        a:visited{
+            color: #8c1955
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+    <div style="position: fixed; top:150px; width: 60% ;left:20%">
+<table class="table table-condensed">
+  <caption>海康威视安全公告</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for h in hik %}
+            <td><a href="{{ h.href }}">{{ h.title }}</a></td>
+      <td>{{ h.time }}</td>
+      </tr>
+        {% endfor %}
+  </tbody>
+</table>
+
+    <table class="table table-condensed">
+  <caption>宇视科技安全公告</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for h in yushi %}
+            <td><a href="{{ h.href }}">{{ h.title }}</a></td>
+      <td>{{ h.time }}</td>
+      </tr>
+        {% endfor %}
+  </tbody>
+</table>
+    </div>
+{% endblock %}
+
